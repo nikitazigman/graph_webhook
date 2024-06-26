@@ -1,0 +1,112 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["Nikita Smirnov <nikita.smirnov@xelix.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.0"
+pydantic = "^2.4.2"
+uvicorn = "^0.23.2"
+gunicorn = "^21.2.0"
+python-jose = "^3.3.0"
+opentelemetry-api = "^1.20.0"
+opentelemetry-sdk = "^1.20.0"
+opentelemetry-instrumentation-fastapi = "^0.41b0"
+opentelemetry-exporter-jaeger = "^1.20.0"
+pydantic-settings = "^2.0.3"
+python-multipart = "^0.0.6"
+fastapi-pagination = "^0.12.11"
+fastapi-limiter = "^0.1.5"
+redis = "^4.6.0"
+asyncpg = "^0.28.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.22"}
+orjson = "^3.9.10"
+rich = "^13.7.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+files = "backend/"
+ignore_missing_imports = "False"
+strict_optional = "True"
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+exclude = [".git", "docs", "build", "dist", "venv"]
+line-length = 88
+target-version = "py312"
+fixable = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "ANN",
+    "ARG",
+    "BLE",
+    "COM",
+    "DJ",
+    "DTZ",
+    "EM",
+    "ERA",
+    "EXE",
+    "FBT",
+    "ICN",
+    "INP",
+    "ISC",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "PYI",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "UP", # pyupgrade,
+    "I",  # isort
+]
+
+[tool.ruff.isort]
+lines-after-imports = 2
+lines-between-types = 1
+section-order = [
+    "future",
+    "standard-library",
+    "first-party",
+    "local-folder",
+    "third-party",
+]
